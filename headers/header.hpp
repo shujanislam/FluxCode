@@ -5,6 +5,7 @@
 #include <string>
 #include<cstdlib>
 #include<sstream>
+#include<fstream>
 #include<map>
 #include "errors.hpp"
 
@@ -187,6 +188,31 @@ void makeArray(std::string arrayName, int n, int *arr){
 
     delete[] newArr; // Delete the array after the program is executed
 
+}
+
+// Function to import module from another file
+void importModule(std::string moduleName, std::string moduleFile){
+    std::ifstream moduleFileName(moduleFile);
+    std::string line;
+    getline(moduleFileName, line); // retrieving the lines from the module file
+    std::stringstream ss(line);
+    std::string extern_command, mod, op, ar1, ar2;
+
+    ss >> extern_command >> mod >> op >> ar1 >> ar2;
+
+    if(extern_command.length() != 0){
+        if(mod == moduleName){
+            func(op, ar1, ar2);
+        }
+        else{
+            std::cout<<"module name was not declared in the scope"<<std::endl;
+        }
+    }
+    else{
+        missingParameters();
+    }
+    
+    
 }
 
 #endif // HEADER_HPP

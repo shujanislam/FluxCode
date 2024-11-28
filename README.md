@@ -144,6 +144,18 @@ if x < y
 pr x is less than y
 ```
 
+## Importing Modules
+
+FluxCode supports importing modules from external files. This allows you to reuse code across different scripts.
+
+```sh
+import <moduleName> from <moduleFile>
+```
+
+```sh
+extern func <operator> <argument1> <argument2>
+```
+
 ## FluxCode includes basic error handling for:
 
 Invalid file extension

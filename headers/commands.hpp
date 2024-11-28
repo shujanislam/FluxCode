@@ -128,6 +128,13 @@ void checkCommands(std::ifstream& sourceFile){
             }
         }
 
+        else if(command == "import"){
+            std::string moduleName, from, moduleFile;
+            ss >> moduleName >> from >> moduleFile;
+
+            importModule(moduleName, moduleFile);
+        }
+
         else if(command == "" || command == " " || command == "//"){} // Ignores blank lines and comments 
         else {
             std::cout << "Invalid command";
